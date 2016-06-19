@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!-- Template Name: Clip-Two - Responsive Admin Template build with Twitter Bootstrap 3.x | Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" ng-app="myApp">
+	<!--<![endif]-->
+	<!-- start: HEAD -->
+	<head>
+		<title>Twitter feed client</title>
+		<!-- start: META -->
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+		<!-- end: META -->
+		<!-- start: GOOGLE FONTS -->
+		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+		<!-- end: GOOGLE FONTS -->
+		<!-- start: MAIN CSS -->
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
+		<link href="vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
+		<link href="vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
+		<link href="vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
+		<!-- end: MAIN CSS -->
+		<!-- start: CLIP-TWO CSS -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<link rel="stylesheet" href="assets/css/plugins.css">
+		<link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
+		<link rel="stylesheet" href="custom_styles/custom.css" />
+		<!-- end: CLIP-TWO CSS -->
+		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+	</head>
+	<!-- end: HEAD -->
+	<body ng-controller="searchController" ng-init="loadFollowings()" when-scroll-ends="getMoreTweets()">
+		<div id="app">
+			<!-- sidebar -->
+			<div class="sidebar app-aside" id="sidebar">
+				<div class="sidebar-container perfect-scrollbar">
+					<nav>
+						<!-- start: SEARCH FORM -->
+
+						<!-- end: SEARCH FORM -->
+						<!-- start: MAIN NAVIGATION MENU -->
+						<div class="navbar-title">
+							<span>Site navigation</span>
+						</div>
+						<ul class="main-navigation-menu">
+							<li>
+								<a>
+									<div class="item-content">
+										<div class="item-media">
+											<i class="ti-search"></i>
+										</div>
+										<div class="item-inner">
+											<a href="?#"><span class="title"> Search tweet </span></a>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">
+									<div class="item-content">
+										<div class="item-media">
+											<i class="ti-twitter"></i>
+										</div>
+										<div class="item-inner" id="subscriptionsList">
+											<span class="title"> Subscriptions </span><i class="icon-arrow"></i>
+										</div>
+									</div>
+								</a>
+								<ul class="sub-menu">
+									<li ng-repeat="user in followingUsers"  class="noselect">
+										<a  ng-click="getTweetsFiltered(user.screen_name)" ng-mouseup="drop(true)">
+											<img draggable="false" class="img-rounded" ng-src="{{user.profile_image_url_https}}" ng-mousedown="drag($event, user.screen_name, false)">
+											<span  draggable="false"  ng-bind="user.screen_name" class="title"></span>
+										</a>
+									</li>
+									<li  class="noselect">
+										<a  ng-mouseup="drop(false)">
+											<i draggable="false" class="fa fa-trash tag-icon"></i>
+											<span draggable="false" class="title">Drag user here to remove</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<!-- end: MAIN NAVIGATION MENU -->
+						<!-- start: CORE FEATURES -->
+
+						<!-- end: CORE FEATURES -->
+						<!-- start: DOCUMENTATION BUTTON -->
+
+						<!-- end: DOCUMENTATION BUTTON -->
+					</nav>
+				</div>
+			</div>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<header class="navbar navbar-default navbar-static-top">
+					<!-- start: NAVBAR HEADER -->
+					<div class="navbar-header">
+						<a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
+							<i class="ti-align-justify"></i>
+						</a>
+						<a class="navbar-brand" href="#">
+							Tweet feed
+						</a>
+						<a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
+							<i class="ti-align-justify"></i>
+						</a>
+						<a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<i class="ti-view-grid"></i>
+						</a>
+					</div>
+					<!-- end: NAVBAR HEADER -->
+					<!-- start: NAVBAR COLLAPSE -->
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-right">
+							<!-- start: MESSAGES DROPDOWN -->
+
+							<!-- end: MESSAGES DROPDOWN -->
+							<!-- start: ACTIVITIES DROPDOWN -->
+
+							<!-- end: ACTIVITIES DROPDOWN -->
+							<!-- start: LANGUAGE SWITCHER -->
+
+							<!-- start: LANGUAGE SWITCHER -->
+							<!-- start: USER OPTIONS DROPDOWN -->
+
+							<!-- end: USER OPTIONS DROPDOWN -->
+
+						<!-- start: MENU TOGGLER FOR MOBILE DEVICES -->
+
+						<!-- end: MENU TOGGLER FOR MOBILE DEVICES -->
+						</ul>
+					</div>
+					<!-- end: NAVBAR COLLAPSE -->
+				</header>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content">
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">Search tweets</h1>
+									<span class="mainDescription">Type any search query and press 'search' button</span>
+								</div>
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: SEARCH RESULT -->
+						<div class="container-fluid container-fullw bg-white">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="search-classic">
+										<form action="#">
+											<div class="input-group well">
+												<input type="text" class="form-control" placeholder="Search..."
+												ng-model="query">
+												<span class="input-group-btn">
+													<button class="btn btn-primary" type="submit" ng-click="getTweets()">
+															<i class="fa fa-search"></i> Search
+													</button> </span>
+											</div>
+										</form>
+										<div ng-show="resultVisibility">
+											<h3>Search results for <span ng-bind="resultQuery"></span></h3>
+											<hr>
+											<div ng-repeat="status in results.statuses">
+												<div class="search-result message-content">
+													<div class="margin-bottom-10">
+														<img draggable="false" class="img-rounded" ng-mousedown="drag($event, status.user.screen_name, true)"  ng-src="{{status.user.profile_image_url_https}}" alt="Author photo">
+													</div>
+													<span class="text-bold text-extra-large text-dark" ng-bind="status.user.screen_name"></span>
+													<span class="text-small" ng-bind-template="({{dateSubString(status.created_at)}})"></span>
+													<i class="ti-heart text-bold text-azure" ></i>
+													<span class="text-extra-large text-azure" ng-bind-template="{{status.favorite_count}}"></span>
+													<h2 ng-bind="status.text"></h2>
+													<div class="iconic-elem-primary">
+														<img class="img-responsive img-rounded" ng-repeat="photo in status.entities.media" ng-src="{{photo.media_url_https}}" alt="Attached photo">
+													</div>
+													<div class="margin-top-20">
+														<span class="input-group-btn">
+															<button type="button" class="btn" ng-class="contains(status.user.screen_name, followingId) ? 'btn-red' : 'btn-primary'"
+																	ng-bind-template="{{contains(status.user.screen_name, followingId) ? 'Unsibsribe' : 'Subscribe'}}" ng-click="subscribeUnsubsribeUser(status.user.screen_name)">
+															</button>
+														</span>
+													</div>
+
+												</div>
+											</div>
+											<hr>
+										</div>
+                                        <div ng-show="loadingVisible" class="center">
+                                            <i class="fa fa-spin fa-gear"></i>
+                                        </div>
+										<div ng-show="!loadingVisible && resultVisibility" class="center">
+											<h2 ng-bind="loadingStatus"></h2>
+										</div>
+										<div ng-show="errorVisible" class="center">
+											<h2 ng-bind="errorStatus"></h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+						<!-- end: SEARCH RESULT -->
+					</div>
+				</div>
+			</div>
+			<!-- start: FOOTER -->
+			<footer>
+				<div class="footer-inner">
+					<div class="pull-left">
+						&copy; <span class="current-year"></span><span class="text-bold text-uppercase">ClipTheme</span>. <span>All rights reserved</span>
+					</div>
+					<div class="pull-right">
+						<span class="go-top"><i class="ti-angle-up"></i></span>
+					</div>
+				</div>
+			</footer>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+
+			<!-- end: OFF-SIDEBAR -->
+			<!-- start: SETTINGS -->
+
+					<!-- end: FIXED FOOTER -->
+					<!-- start: THEME SWITCHER -->
+
+					<!-- end: THEME SWITCHER -->
+
+			<!-- end: SETTINGS -->
+		<!--</div>-->
+		<!-- start: MAIN JAVASCRIPTS -->
+		<script type="text/javascript">
+			var sign = window.location;
+			sign = sign.toString();
+			sign = sign.indexOf('?');
+			if(sign > -1){
+				var adress = window.location;
+				adress = adress.toString();
+				adress = adress.substr(0,sign);
+				adress += "?#";
+				window.location = adress;
+			}else{
+				window.location += "?#";
+			}
+		</script>
+		<script src="js/lib/angular.min.js"></script>
+		<script src="js/lib/codebird.js"></script>
+		<script type="text/javascript">
+			var myApp = angular.module('myApp', []);
+		</script>
+		<script src="js/controllers/searchController.js"></script>
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="vendor/modernizr/modernizr.js"></script>
+		<script src="vendor/jquery-cookie/jquery.cookie.js"></script>
+		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script src="vendor/switchery/switchery.min.js"></script>
+		<!-- end: MAIN JAVASCRIPTS -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<script src="assets/js/main.js"></script>
+		<!-- start: JavaScript Event Handlers for this page -->
+		<script>
+			jQuery(document).ready(function() {
+				Main.init();
+			});
+		</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>
